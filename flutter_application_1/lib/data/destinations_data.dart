@@ -29,7 +29,6 @@ final List<Destination> destinations = [
     imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Fuji_Kawaguchi_357.JPG/1200px-Fuji_Kawaguchi_357.JPG',
     rating: 5.0,
   ),
-  // Noi destinații
   Destination(
     title: 'Taj Mahal',
     location: 'Agra, India',
@@ -85,5 +84,54 @@ final List<Destination> destinations = [
     description: 'Șosea montană spectaculoasă, renumită pentru serpentinele sale și peisajele impresionante; deschisă sezonier.',
     imageUrl: 'https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0a/8c/30/ac.jpg',
     rating: 4.6,
+  ),
+  Destination(
+    title: 'Torres del Paine',
+    location: 'Patagonia, Chile',
+    description: 'Parc național cu masive de granit iconice, lacuri turcoaz și ghețari spectaculoși, ideal pentru trekking.',
+    imageUrl: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/88/c2/b5/caption.jpg?w=900&h=500&s=1',
+    rating: 4.9,
+  ),
+  Destination(
+    title: 'Cappadocia',
+    location: 'Göreme, Turcia',
+    description: 'Peisaje de tuf vulcanic, „fairy chimneys” și zboruri cu balonul la răsărit pentru panorame de poveste.',
+    imageUrl: 'https://leaveyourdailyhell.com/wp-content/uploads/2024/07/Cappadocia.jpg',
+    rating: 4.8,
+  ),
+  Destination(
+    title: 'Banff National Park',
+    location: 'Alberta, Canada',
+    description: 'Lacuri glaciare precum Lake Louise, munți stâncoși și faună sălbatică; paradis pentru drumeții și fotografie.',
+    imageUrl: 'https://magazine.northeast.aaa.com/wp-content/uploads/2018/05/banff-national-park-1.jpg?w=640',
+    rating: 4.8,
+  ),
+  Destination(
+    title: 'Serengeti',
+    location: 'Tanzania',
+    description: 'Rezervație celebră pentru migrația anuală a milioanelor de gnu și zebre, safari de clasă mondială.',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/NgoroNgoro_Crater%2C_Tanzania%2C_Africa.jpg/960px-NgoroNgoro_Crater%2C_Tanzania%2C_Africa.jpg',
+    rating: 4.7,
+  ),
+  Destination(
+    title: 'Bagan',
+    location: 'Myanmar',
+    description: 'Câmpie cu mii de temple budiste antice, renumită pentru răsăriturile văzute din balonul cu aer cald.',
+    imageUrl: 'https://i.natgeofe.com/n/95f6d0ed-f811-4fdd-a7e4-0f9deb74c083/Bagan2.jpg',
+    rating: 4.7,
+  ),
+  Destination(
+    title: 'Tromsø Aurora',
+    location: 'Tromsø, Norvegia',
+    description: 'Unul dintre cele mai accesibile locuri pentru a vedea Aurora Boreală, cu peisaje arctice și activități de iarnă.',
+    imageUrl: 'https://ntc.objects.frb.io/assets/images/David_Gonzalez_Buendia_Media_Northern_Lights_Chase_Troms%C3%B8_R%C3%B8dne_ROF_03485.jpeg',
+    rating: 4.8,
+  ),
+  Destination(
+    title: 'Anse Source d’Argent',
+    location: 'La Digue, Seychelles',
+    description: 'Plajă faimoasă pentru nisipul roz, bolovani de granit uriași și ape cristaline ideale pentru snorkeling.',
+    imageUrl: 'https://lp-cms-production.imgix.net/2019-06/bc5eb4fe63f5c3d4dd35b7be6754d926-anse-source-d-argent.jpg',
+    rating: 4.8,
   ),
 ];

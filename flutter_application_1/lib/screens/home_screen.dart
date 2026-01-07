@@ -16,14 +16,24 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _searchController = TextEditingController();
   String _query = '';
+  bool _sortDesc = true;
 
   List<Destination> get _filteredDestinations {
-    if (_query.isEmpty) return destinations;
-    final lower = _query.toLowerCase();
-    return destinations.where((d) {
-      return d.title.toLowerCase().contains(lower) ||
-          d.location.toLowerCase().contains(lower);
-    }).toList();
+    List<Destination> results;
+    if (_query.isEmpty) {
+      results = List<Destination>.from(destinations);
+    } else {
+      final lower = _query.toLowerCase();
+      results = destinations.where((d) {
+        return d.title.toLowerCase().contains(lower) ||
+            d.location.toLowerCase().contains(lower);
+      }).toList();
+    }
+
+    results.sort((a, b) => _sortDesc
+        ? b.rating.compareTo(a.rating)
+        : a.rating.compareTo(b.rating));
+    return results;
   }
 
   @override
@@ -71,6 +81,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+            child: Row(
+              children: [
+                const Text('Sortează după rating'),
+                const SizedBox(width: 8),
+                IconButton(
+                  tooltip: _sortDesc ? 'Descrescător' : 'Crescător',
+                  icon: Icon(
+                    _sortDesc ? Icons.arrow_downward : Icons.arrow_upward,
+                  ),
+                  onPressed: () => setState(() => _sortDesc = !_sortDesc),
+                ),
+              ],
             ),
           ),
           Expanded(
