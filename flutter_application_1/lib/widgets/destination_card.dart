@@ -71,11 +71,17 @@ class CustomDestinationCard extends StatelessWidget {
                   const SizedBox(height: 5),
                   Row(
                     children: [
-                      const Icon(Icons.location_on, size: 16, color: Colors.grey),
+                      Icon(
+                        Icons.location_on,
+                        size: 16,
+                        color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                      ),
                       const SizedBox(width: 4),
                       Text(
                         destination.location,
-                        style: const TextStyle(color: Colors.grey),
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                        ),
                       ),
                     ],
                   ),
