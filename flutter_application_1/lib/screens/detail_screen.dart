@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import '../models/destination.dart';
 
+/// Ecranul care afișează detaliile pentru o `Destination`.
+/// Folosește un `CustomScrollView` cu `SliverAppBar` pentru a oferi un header expandabil cu imaginea destinației și un conținut scrollabil dedesubt.
 class DetailScreen extends StatelessWidget {
+  /// Destinația afișată pe acest ecran.
   final Destination destination;
 
   const DetailScreen({super.key, required this.destination});
 
+  /// Construiește ecranul de detalii, incluzând un `SliverAppBar` cu imaginea și o secțiune de descriere cu un buton de rezervare (simulat).
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,11 +19,11 @@ class DetailScreen extends StatelessWidget {
             expandedHeight: 300.0,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(destination.title, 
+              // Titlul este afișat peste imagine; se folosesc umbre pentru lizibilitate când imaginea e deschisă la culoare.
+              title: Text(destination.title,
                   style: const TextStyle(
-                    color: Colors.white, 
-                    shadows: [Shadow(color: Colors.black, blurRadius: 10)]
-                  )),
+                      color: Colors.white,
+                      shadows: [Shadow(color: Colors.black, blurRadius: 10)])),
               background: Image.network(
                 destination.imageUrl,
                 fit: BoxFit.cover,
@@ -56,6 +60,7 @@ class DetailScreen extends StatelessWidget {
                   Center(
                     child: ElevatedButton.icon(
                       onPressed: () {
+                        // Simulăm o rezervare afișând un SnackBar.
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Rezervare simulată cu succes!')),
                         );

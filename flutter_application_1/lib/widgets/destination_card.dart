@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import '../models/destination.dart';
 import '../screens/detail_screen.dart';
 
+/// Card personalizat pentru afișarea unei `Destination` într-o listă.
+/// Afișează imaginea, titlul, locația și ratingul; la apăsare navighează către `DetailScreen` pentru destinația respectivă.
 class CustomDestinationCard extends StatelessWidget {
+  /// Destinația afișată în card.
   final Destination destination;
 
   const CustomDestinationCard({super.key, required this.destination});
 
+  /// Construiește cardul vizual pentru o destinație.
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -15,6 +19,7 @@ class CustomDestinationCard extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
+        // Navighează la ecranul de detalii când cardul este apăsat.
         onTap: () {
           Navigator.push(
             context,
@@ -31,7 +36,8 @@ class CustomDestinationCard extends StatelessWidget {
               height: 200,
               width: double.infinity,
               fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) => 
+              // În cazul unei erori la încărcarea imaginii afișăm un icon.
+              errorBuilder: (context, error, stackTrace) =>
                   const Center(child: Icon(Icons.error)),
             ),
             Padding(

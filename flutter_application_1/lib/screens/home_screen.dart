@@ -3,12 +3,18 @@ import '../data/destinations_data.dart';
 import '../models/destination.dart';
 import '../widgets/destination_card.dart';
 
+/// Opțiuni de sortare disponibile pentru lista de destinații.
 enum SortOption { none, ratingDesc, ratingAsc, nameAsc, nameDesc }
 
+/// Ecranul principal care afișează lista de destinații.
+/// Oferă funcționalități de căutare, filtrare și sortare, precum și un buton pentru comutarea temei (luminos/întunecat) primit din `MyApp`.
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.isDarkMode, required this.onToggleTheme});
 
+  /// Indică dacă tema curentă este dark.
   final bool isDarkMode;
+
+  /// Callback apelat pentru a comuta tema.
   final ValueChanged<bool> onToggleTheme;
 
   @override
@@ -20,9 +26,12 @@ class _HomeScreenState extends State<HomeScreen> {
   String _query = '';
   SortOption _sortOption = SortOption.none;
 
+  /// Returnează lista de destinații filtrată și sortată în funcție de stare.
+  /// Filtrarea se face pe `title` și `location`. Sortarea aplică comparatoare diferite în funcție de `_sortOption`.
   List<Destination> get _filteredDestinations {
     List<Destination> results;
     if (_query.isEmpty) {
+      // Folosim o copie pentru a nu modifica lista originală `destinations`.
       results = List<Destination>.from(destinations);
     } else {
       final lower = _query.toLowerCase();
@@ -32,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
       }).toList();
     }
 
+    // Aplicăm sortarea pe copia `results`:
     switch (_sortOption) {
       case SortOption.ratingDesc:
         results.sort((a, b) => b.rating.compareTo(a.rating));
@@ -46,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
         results.sort((a, b) => b.title.compareTo(a.title));
         break;
       case SortOption.none:
-        // keep original order
+        // păstrăm ordinea implicită a listei
         break;
     }
     return results;
@@ -58,6 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
+  /// Construiește interfața ecranului principal: bară de căutare, dropdown desortare și lista de `CustomDestinationCard`.
   @override
   Widget build(BuildContext context) {
     final filtered = _filteredDestinations;
@@ -70,6 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
             tooltip: widget.isDarkMode ? 'Mod luminos' : 'Mod întunecat',
             icon: Icon(widget.isDarkMode ? Icons.light_mode : Icons.dark_mode),
+            // Trimitem callback-ul către `MyApp` pentru a comuta tema.
             onPressed: () => widget.onToggleTheme(!widget.isDarkMode),
           ),
         ],
@@ -80,6 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
             child: TextField(
               controller: _searchController,
+              // Actualizăm `_query` la fiecare schimbare pentru a reactualiza UI.
               onChanged: (value) => setState(() => _query = value),
               decoration: InputDecoration(
                 hintText: 'Caută destinații sau locații',

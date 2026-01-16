@@ -1,5 +1,7 @@
 import '../models/destination.dart';
 
+/// Listă hardcodata de `Destination` folosită pentru demo.
+/// Într-o aplicație reală, aceste date ar veni dintr-o bază de date sau API.
 final List<Destination> destinations = [
   Destination(
     title: 'Castelul Peleș',
@@ -134,4 +136,6 @@ final List<Destination> destinations = [
     imageUrl: 'https://lp-cms-production.imgix.net/2019-06/bc5eb4fe63f5c3d4dd35b7be6754d926-anse-source-d-argent.jpg',
     rating: 4.8,
   ),
+  // Observație: unele URL-uri pot fi mari sau pot redirecționa, iar încărcarea
+  // lor depinde de conexiunea utilizatorului și de permisiuni CORS pe web.
 ];
